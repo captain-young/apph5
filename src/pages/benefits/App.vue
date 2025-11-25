@@ -13,7 +13,7 @@
         </p>
         <div class="compatible-model">
           <p><strong>Compatible Model:</strong></p>
-          <p>ELEHEAR Beyond Hearing Aids Only</p>
+          <p><strong>ELEHEAR Beyond Hearing Aids Only</strong></p>
         </div>
       </header>
 
@@ -92,11 +92,11 @@
         <!-- External link: opens in new tab with safe rel attributes -->
         <a class="link-item" href="https://elehear.com/pages/contact-us" target="_blank" rel="noopener noreferrer">
           <span>Contact Us</span>
-          <span class="chevron">&gt;</span>
+          <img :src="arrowRight" alt="arrow right">
         </a>
-        <a class="link-item" href="https://elehear.com/policies/terms-of-service" target="_blank" rel="noopener noreferrer">
+        <a class="link-item" href="https://elehear.com/pages/protection-plan-policy" target="_blank" rel="noopener noreferrer">
           <span>Terms of Service Apply</span>
-          <span class="chevron">&gt;</span>
+          <img :src="arrowRight" alt="arrow right">
         </a>
       </footer>
     </div>
@@ -116,6 +116,8 @@ import workStep2 from './images/icon-work-step2.svg'
 import workStep3 from './images/icon-work-step3.svg'
 // @ts-ignore: allow importing SVGs without type declarations
 import warning from './images/icon-warning.svg'
+// @ts-ignore: allow importing SVGs without type declarations
+import arrowRight from './images/arrow-right.svg'
 </script>
 
 <style scoped>
@@ -179,8 +181,8 @@ h1, h2, h3, h4, p {
 .warning-note {
   display: flex;
   align-items: top;
-  background-color: #fff4e5;
-  border: 1px solid #ff9800;
+  background-color: #f056270c;
+  border: 1px solid #f05627;
   border-radius: 8px;
   padding: 16px;
   margin-bottom: 32px;
@@ -241,7 +243,6 @@ h1, h2, h3, h4, p {
 .item-description {
   font-size: 16px;
   line-height: 1.6;
-  padding-left: 40px; /* Aligns with title text */
   margin-bottom: 20px;
 }
 
@@ -353,8 +354,5 @@ h1, h2, h3, h4, p {
     border-top: 1px solid #eee;
 }
 
-.chevron {
-  font-size: 20px;
-  color: #ccc;
-}
+
 </style>

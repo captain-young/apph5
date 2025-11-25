@@ -27,13 +27,25 @@ function getRepoInfo(): RepoInfo | null {
 }
 
 /** 获取 dist 目录下的所有 HTML 文件 */
-function getHtmlPages(): string[] {
-  const distPath = path.resolve("dist");
-  if (!fs.existsSync(distPath)) return [];
-  return fs
-    .readdirSync(distPath)
-    .filter((f) => f.endsWith(".html"))
-    .sort();
+function getHtmlPages(dir: string = path.resolve("dist")): string[] {
+  let pages: string[] = [];
+
+  function walk(currentDir: string) {
+    const files = fs.readdirSync(currentDir);
+    for (const file of files) {
+      const fullPath = path.join(currentDir, file);
+      const stat = fs.statSync(fullPath);
+      if (stat.isDirectory()) {
+        walk(fullPath);
+      } else if (file.endsWith(".html")) {
+        // 保存相对于 dist 的路径
+        pages.push(path.relative(path.resolve("dist"), fullPath).replace(/\\/g, "/"));
+      }
+    }
+  }
+
+  walk(dir);
+  return pages.sort();
 }
 
 /** 检查是否存在 CNAME 文件（用于自定义域名） */
